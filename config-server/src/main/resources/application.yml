@@ -6,7 +6,7 @@ spring:
       server:
         git:
           uri: https://github.com/eliffT/smart-order
-          default-label: master
+          default-label: main
           search-paths: 
             - configurations/
             - configurations/{application}
