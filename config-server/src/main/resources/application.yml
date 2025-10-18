@@ -6,3 +6,10 @@ spring:
       server:
         git:
           uri: 
+          default-label: master
+          search-paths: 
+            - configurations/
+            - configurations/{application}
+
+server:
+  port: 8787
