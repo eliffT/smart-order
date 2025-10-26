@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Mono;
 
-import org.springframework.boot.autoconfigure.security.oauth2.server.servlet.OAuth2AuthorizationServerProperties.OidcEndpoint;
+import java.util.Map;
+
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BFFController {
 
     @GetMapping("me")
-    public Mono<Map<String, Object>>  get(@AuthenticationPrincipal OidcUser user) {
+    public Mono<Map<String, Object>> get(@AuthenticationPrincipal OidcUser user) {
         return Mono.just(
-            Map.of
-        )
+                Map.of(
+                        "username", user.getPreferredUsername(),
+                        "email", user.getEmail(),
+                        "authorities", user.getAuthorities()));
     }
 
 }
