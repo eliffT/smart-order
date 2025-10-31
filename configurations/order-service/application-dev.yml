@@ -18,12 +18,13 @@ spring:
 
   kafka:
     bootstrap-servers: localhost:9094
+
   cloud:
     stream:
-    kafka:
-      binder:
-      brokers: localhost:9094
-    bindings:
-      orderCreated-out-0:
-      destination: order-topic
-      contentType: application/json
+      kafka:
+        binder:
+          brokers: localhost:9094
+      bindings:
+        orderCreated-out-0:
+          destination: order-topic
+          contentType: application/json

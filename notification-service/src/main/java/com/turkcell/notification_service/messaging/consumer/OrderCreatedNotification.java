@@ -11,10 +11,10 @@ public class OrderCreatedNotification {
     public Consumer<OrderCreatedEvent> orderCreated() {
         return event -> {
             System.out.println("[Notification] maili gönderildi.");
-            System.out.println(event.email);
+            System.out.println(event.productId());
         };
     }
 
-    record OrderCreatedEvent(String productId, String orderId, String email) {
+    record OrderCreatedEvent(String productId) {
     }
 }
